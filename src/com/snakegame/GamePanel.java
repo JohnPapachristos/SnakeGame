@@ -14,8 +14,8 @@ public class GamePanel extends JPanel implements ActionListener {
     static final int UNIT_SIZE = 25;
     static final int GAME_UNITS = (SCREEN_WIDTH * SCREEN_HEIGHT)/UNIT_SIZE;
     static final int DELAY = 75;
-    final int x[] = new int[GAME_UNITS];
-    final int y[] = new int[GAME_UNITS];
+    final int[] x = new int[GAME_UNITS];
+    final int[] y = new int[GAME_UNITS];
     int bodyParts = 6;
     int applesEaten;
     int appleX;
@@ -85,19 +85,11 @@ public class GamePanel extends JPanel implements ActionListener {
             y[i] = y[i-1];
         }
 
-        switch(direction) {
-            case 'U':
-                y[0] = y[0] - UNIT_SIZE;
-                break;
-            case 'D':
-                y[0] = y[0] + UNIT_SIZE;
-                break;
-            case 'R':
-                x[0] = x[0] + UNIT_SIZE;
-                break;
-            case 'L':
-                x[0] = x[0] - UNIT_SIZE;
-                break;
+        switch (direction) {
+            case 'U' -> y[0] = y[0] - UNIT_SIZE;
+            case 'D' -> y[0] = y[0] + UNIT_SIZE;
+            case 'R' -> x[0] = x[0] + UNIT_SIZE;
+            case 'L' -> x[0] = x[0] - UNIT_SIZE;
         }
     }
 
@@ -151,19 +143,11 @@ public class GamePanel extends JPanel implements ActionListener {
     public class MyKeyAdapter extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
-            switch (e.getKeyCode()){
-                case KeyEvent.VK_UP:
-                    direction = 'U';
-                    break;
-                case KeyEvent.VK_DOWN:
-                    direction = 'D';
-                    break;
-                case KeyEvent.VK_RIGHT:
-                    direction = 'R';
-                    break;
-                case KeyEvent.VK_LEFT:
-                    direction = 'L';
-                    break;
+            switch (e.getKeyCode()) {
+                case KeyEvent.VK_UP -> direction = 'U';
+                case KeyEvent.VK_DOWN -> direction = 'D';
+                case KeyEvent.VK_RIGHT -> direction = 'R';
+                case KeyEvent.VK_LEFT -> direction = 'L';
             }
         }
 
